@@ -4,9 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\AboutContent;
 use App\Models\CaseContent;
+use App\Models\ContactContent;
 use App\Models\FeatureContent;
 use App\Models\HomeContent;
+use App\Models\KondisiContent;
 use App\Models\PriceContent;
+use App\Models\SyaratContent;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -21,6 +24,9 @@ class PageController extends Controller
         $dataCase = CaseContent::all();
         $dataFeature = FeatureContent::all();
         $dataPrice = PriceContent::all();
+        $dataSyarat = SyaratContent::all();
+        $dataKondisi = KondisiContent::all();
+        $dataContact = ContactContent::all();
 
         $data = [
             'dataHome'          => $dataHome,
@@ -30,6 +36,9 @@ class PageController extends Controller
             'dataCase'          => $dataCase,
             'dataFeature'       => $dataFeature,
             'dataPrice'         => $dataPrice,
+            'dataSyarat'         => $dataSyarat,
+            'dataKondisi'         => $dataKondisi,
+            'dataContact'         => $dataContact,
         ];
 
         return view('home', $data);

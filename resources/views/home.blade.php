@@ -189,18 +189,13 @@
             <div class="container" data-aos="fade-up">
                 <div class="section-title">
                     <h2>Syarat & Kondisi</h2>
-                    <p>
-                        Kebijakan Privasi :
-                    </p>
-                    <p>
-                        Selamat datang di website Proctor.Web.ID
-                    </p>
-                    <p>
-                        Kebijakan ini mengatur penggunaan dan akses Anda ke platform kami. Dengan menggunakan
-                        aplikasi ini, Anda dianggap telah membaca, memahami, dan menyetujui semua ketentuan
-                        yang tercantum di bawah ini. Jika Anda tidak setuju dengan kebijakan ini, harap berhenti
-                        menggunakan website/aplikasi kami.
-                    </p>
+                    @if ($dataSyarat->isEmpty())
+                        <p>No data available</p>
+                    @else
+                        @foreach ($dataSyarat as $index => $item)
+                            {!! $item->desc !!}
+                        @endforeach
+                    @endif
                 </div>
             </div>
         </section>
@@ -214,51 +209,28 @@
                 </div>
                 <div class="faq-list">
                     <ul>
-                        <li data-aos="fade-up" data-aos-delay="100">
-                            <a data-bs-toggle="collapse" class="collapse" data-bs-target="#faq-list-1">Peserta
-                                <i class="bx bx-chevron-down icon-show"></i>
-                                <i class="bx bx-chevron-up icon-close"></i>
-                            </a>
-                            <div id="faq-list-1" class="collapse show" data-bs-parent=".faq-list">
-                                <p>
-                                    Untuk mengakses teknologi proctoring kami, Anda harus mendaftar sebagai peserta pada
-                                    penyelenggara yang terdaftar di dalam system. dengan mengikuti proses pendaftaran yang
-                                    ditentukan. Informasi yang Anda berikan harus akurat, lengkap, dan terkini.
-                                </p>
-                            </div>
-                        </li>
-
-                        <li data-aos="fade-up" data-aos-delay="200">
-                            <a data-bs-toggle="collapse" data-bs-target="#faq-list-2" class="collapse">Penggunaan yang
-                                Sah
-                                <i class="bx bx-chevron-down icon-show"></i>
-                                <i class="bx bx-chevron-up icon-close"></i>
-                            </a>
-                            <div id="faq-list-2" class="collapse show" data-bs-parent=".faq-list">
-                                <p>
-                                    Anda diperbolehkan menggunakan website ini untuk tujuan pribadi, non-komersial, dan
-                                    sesuai dengan hukum yang berlaku. Dilarang menggunakan website/aplikasi kami untuk
-                                    tujuan yang melanggar hukum, merugikan orang lain, atau melanggar hak kekayaan
-                                    intelektual
-                                </p>
-                            </div>
-                        </li>
-
-                        <li data-aos="fade-up" data-aos-delay="300">
-                            <a data-bs-toggle="collapse" data-bs-target="#faq-list-3" class="collapse">Ketersediaan
-                                Layanan
-                                <i class="bx bx-chevron-down icon-show"></i>
-                                <i class="bx bx-chevron-up icon-close"></i>
-                            </a>
-                            <div id="faq-list-3" class="collapse show" data-bs-parent=".faq-list">
-                                <p>
-                                    Kami berupaya menjaga ketersediaan dan keandalan website kami. Namun, terkadang
-                                    mungkin terjadi gangguan teknis atau pemeliharaan yang dapat memengaruhi aksesibilitas
-                                    situs. Kami tidak bertanggung jawab atas kerugian atau gangguan yang disebabkan oleh
-                                    ketidaktersediaan sementara.
-                                </p>
-                            </div>
-                        </li>
+                        @if ($dataKondisi->isEmpty())
+                            <p>No data available</p>
+                        @else
+                            @foreach ($dataKondisi as $index => $item)
+                                @php
+                                    $delay = 100 * (($index % 4) + 1);
+                                @endphp
+                                <li data-aos="fade-up" data-aos-delay="{{ $delay }}">
+                                    <a data-bs-toggle="collapse" class="collapse"
+                                        data-bs-target="#faq-list-{{ $index + 1 }}">{{ $item->title }}
+                                        <i class="bx bx-chevron-down icon-show"></i>
+                                        <i class="bx bx-chevron-up icon-close"></i>
+                                    </a>
+                                    <div id="faq-list-{{ $index + 1 }}" class="collapse show"
+                                        data-bs-parent=".faq-list">
+                                        <p>
+                                            {!! $item->desc !!}
+                                        </p>
+                                    </div>
+                                </li>
+                            @endforeach
+                        @endif
                     </ul>
                 </div>
             </div>
@@ -273,29 +245,34 @@
 
                 <div class="row">
                     <div class="col-lg-5 d-flex align-items-stretch">
-                        <div class="info">
-                            <div class="address">
-                                <i class="bi bi-geo-alt"></i>
-                                <h4>Location:</h4>
-                                <p>Indonesia</p>
-                            </div>
+                        @if ($dataContact->isEmpty())
+                            <p>No data available</p>
+                        @else
+                            @foreach ($dataContact as $index => $item)
+                                <div class="info">
+                                    <div class="address">
+                                        <i class="bi bi-geo-alt"></i>
+                                        <h4>Location:</h4>
+                                        <p>{{ $item->location }}</p>
+                                    </div>
 
-                            <div class="email">
-                                <i class="bi bi-envelope"></i>
-                                <h4>Email:</h4>
-                                <p>info@example.com</p>
-                            </div>
+                                    <div class="email">
+                                        <i class="bi bi-envelope"></i>
+                                        <h4>Email:</h4>
+                                        <p>{{ $item->email }}</p>
+                                    </div>
 
-                            <div class="phone">
-                                <i class="bi bi-phone"></i>
-                                <h4>Call:</h4>
-                                <p>+62 888 1234 4321</p>
-                            </div>
+                                    <div class="phone">
+                                        <i class="bi bi-phone"></i>
+                                        <h4>Call:</h4>
+                                        <p>{{ $item->phone }}</p>
+                                    </div>
 
-                            <iframe
-                                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12097.433213460943!2d-74.0062269!3d40.7101282!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb89d1fe6bc499443!2sDowntown+Conference+Center!5e0!3m2!1smk!2sbg!4v1539943755621"
-                                frameborder="0" style="border: 0; width: 100%; height: 290px" allowfullscreen></iframe>
-                        </div>
+                                    <iframe src="{{ $item->maps }}" frameborder="0"
+                                        style="border: 0; width: 100%; height: 290px" allowfullscreen></iframe>
+                                </div>
+                            @endforeach
+                        @endif
                     </div>
 
                     <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
