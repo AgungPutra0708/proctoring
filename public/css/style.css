@@ -202,7 +202,7 @@ h6 {
 .navbar .getstarted:hover,
 .navbar .getstarted:focus:hover {
     color: #44414a;
-    background: #31a9e1;
+    background: #ff7d29;
 }
 
 .navbar .dropdown ul {
@@ -347,7 +347,7 @@ h6 {
 .navbar-mobile .getstarted,
 .navbar-mobile .getstarted:focus {
     margin: 15px;
-    color: #37517e;
+    color: #ff7d29;
 }
 
 .navbar-mobile .dropdown ul {
@@ -1874,4 +1874,8 @@ section {
     #footer .credits {
         padding-top: 4px;
     }
+}
+
+.size-icon {
+    font-size: 6rem !important;
 }

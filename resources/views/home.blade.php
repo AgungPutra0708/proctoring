@@ -112,7 +112,7 @@
                         <div class="col-xl-6 col-md-6 mt-4" data-aos="zoom-in"
                             data-aos-delay="{{ 100 * (($index % 4) + 1) }}">
                             <div class="icon-box">
-                                <div class="icon"><i class="bx {{ $item->icon }}"></i></div>
+                                <div class="icon"><i class="bx {{ $item->icon }} size-icon"></i></div>
                                 <h4><a href="">{{ $item->title }}</a></h4>
                             </div>
                         </div>

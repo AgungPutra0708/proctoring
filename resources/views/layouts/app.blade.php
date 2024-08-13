@@ -35,15 +35,20 @@
 
             <nav id="navbar" class="navbar">
                 <ul>
-                    <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
+                    {{-- <li><a class="nav-link scrollto active" href="#hero">Home</a></li> --}}
                     <li><a class="nav-link scrollto" href="#about">About</a></li>
-                    <li><a class="nav-link scrollto" href="#case">Study Case</a></li>
+                    {{-- <li><a class="nav-link scrollto" href="#case">Study Case</a></li> --}}
                     <li>
                         <a class="nav-link scrollto" href="#features">Features</a>
                     </li>
                     <li><a class="nav-link scrollto" href="#pricelist">Pricelist</a></li>
-                    <li><a class="nav-link scrollto" href="#term">Term & Condition</a></li>
-                    <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+                    <li><a class="nav-link scrollto" href="#term">Faq</a></li>
+                    <li>
+                        <a class="nav-link scrollto" href="#contact">Contact</a>
+                    </li>
+                    <li>
+                        <a class="getstarted" href="#about">Sign Up</a>
+                    </li>
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
             </nav>
@@ -56,11 +61,26 @@
         @yield('content')
         <!-- ======= Footer ======= -->
         <footer id="footer">
-            <div class="container footer-bottom clearfix">
-                <div class="copyright">
-                    &copy; Copyright 2024. All Rights Reserved
+            <div class="container d-flex align-items-center">
+                <h1 class="logo me-auto">Menu Utama</h1>
+                <!-- Uncomment below if you prefer to use an image logo -->
+                <!-- <a href="index.html" class="logo me-auto"><img src="img/logo.png" alt="" class="img-fluid"></a>-->
+
+                <div id="navbar" class="navbar">
+                    <ul>
+                        <li><a class="nav-link" href="#hero">Home</a></li>
+                        <li><a class="nav-link" href="#about">About</a></li>
+                        <li><a class="nav-link" href="#case">Study Case</a></li>
+                        <li>
+                            <a class="nav-link" href="#features">Features</a>
+                        </li>
+                        <li><a class="nav-link" href="#pricelist">Pricelist</a></li>
+                        <li><a class="nav-link" href="#term">Faq</a></li>
+                        <li><a class="nav-link" href="#contact">Contact</a></li>
+                    </ul>
                 </div>
             </div>
+            <!-- .navbar -->
         </footer>
         <!-- End Footer -->
     </div>
